@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
+#include "common.hpp"
+#include <unistd.h>
 
 extern "C" {
-    void android_main(struct android_app* state);
+void android_main(struct android_app *state);
 };
 
-void android_main(struct android_app* app) {
-while(1);
+void android_main(struct android_app *app) {
+    while (1) {
+        sleep(1);
+        LOGD("fuck");
+        LOGE("fuck");
+    }
 }
 
