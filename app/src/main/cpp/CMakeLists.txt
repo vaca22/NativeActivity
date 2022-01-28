@@ -40,7 +40,6 @@ add_library(game SHARED
      dialog_scene.cpp
      indexbuf.cpp
      input_util.cpp
-     jni_util.cpp
      native_engine.cpp
      obstacle.cpp
      obstacle_generator.cpp
