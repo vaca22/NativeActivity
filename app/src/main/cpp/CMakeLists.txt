@@ -34,7 +34,9 @@ add_definitions("-DGLM_FORCE_SIZE_T_LENGTH -DGLM_FORCE_RADIANS")
 
 # now build app's shared lib
 add_library(game SHARED
-     android_main.cpp)
+     android_main.cpp
+        scene.cpp
+        scene_manager.cpp)
 
 target_include_directories(game PRIVATE
      ${CMAKE_CURRENT_SOURCE_DIR}
