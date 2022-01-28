@@ -28,7 +28,7 @@
 #define S_START_OVER "Start Over"
 #define S_RESUME "Start from checkpoint"
 
-#define S_TITLE "Endless Tunnel"
+#define S_TITLE "3D Snake"
 #define S_PLAY "Play!"
 
 #define S_PLEASE_WAIT "Please wait..."

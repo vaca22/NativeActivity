@@ -19,6 +19,7 @@
 #include "scene_manager.hpp"
 #include "welcome_scene.hpp"
 #include "native_engine.hpp"
+#include "snake_scene.hpp"
 
 // verbose debug logs on?
 #define VERBOSE_LOGGING 1
@@ -533,7 +534,7 @@ void NativeEngine::DoFrame() {
     // if this is the first frame, install the welcome scene
     if (mIsFirstFrame) {
         mIsFirstFrame = false;
-        mgr->RequestNewScene(new WelcomeScene());
+        mgr->RequestNewScene(new SnakeScene());
     }
 
     // render!

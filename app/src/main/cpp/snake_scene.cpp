@@ -16,7 +16,7 @@
 #include "anim.hpp"
 #include "dialog_scene.hpp"
 #include "play_scene.hpp"
-#include "welcome_scene.hpp"
+#include "snake_scene.hpp"
 
 #include "blurb.inl"
 #include "strings.inl"
@@ -46,31 +46,33 @@
 
 
 
-WelcomeScene::WelcomeScene() {
+SnakeScene::SnakeScene() {
 }
 
-WelcomeScene::~WelcomeScene() {
+SnakeScene::~SnakeScene() {
 }
 
-void WelcomeScene::RenderBackground() {
-    RenderBackgroundAnimation(mShapeRenderer);
-}
+/*void SnakeScene::RenderBackground() {
+   // RenderBackgroundAnimation(mShapeRenderer);
+}*/
 
-void WelcomeScene::OnButtonClicked(int id) {
+void SnakeScene::OnButtonClicked(int id) {
     SceneManager *mgr = SceneManager::GetInstance();
-
+    mgr->RequestNewScene(new PlayScene());
+   // SceneManager *mgr = SceneManager::GetInstance();
+/*
     if (id == mPlayButtonId) {
         mgr->RequestNewScene(new PlayScene());
-    } else if (id == mStoryButtonId) {
+    } *//*else if (id == mStoryButtonId) {
         mgr->RequestNewScene((new DialogScene())->SetText(BLURB_STORY)->SetSingleButton(S_OK,
-                DialogScene::ACTION_RETURN));
+                                                                                        DialogScene::ACTION_RETURN));
     } else if (id == mAboutButtonId) {
         mgr->RequestNewScene((new DialogScene())->SetText(BLURB_ABOUT)->SetSingleButton(S_OK,
-                DialogScene::ACTION_RETURN));
-    }
+                                                                                        DialogScene::ACTION_RETURN));
+    }*/
 }
 
-void WelcomeScene::DoFrame() {
+void SnakeScene::DoFrame() {
     // update widget states based on signed-in status
     UpdateWidgetStates();
 
@@ -81,57 +83,59 @@ void WelcomeScene::DoFrame() {
     UiScene::DoFrame();
 }
 
-void WelcomeScene::UpdateWidgetStates() {
+void SnakeScene::UpdateWidgetStates() {
     // Build navigation
-    AddNav(mPlayButtonId, UI_DIR_LEFT, mStoryButtonId);
+  /*  AddNav(mPlayButtonId, UI_DIR_LEFT, mStoryButtonId);
     AddNav(mPlayButtonId, UI_DIR_RIGHT, mAboutButtonId);
 
     AddNav(mStoryButtonId, UI_DIR_RIGHT, mPlayButtonId);
 
-    AddNav(mAboutButtonId, UI_DIR_LEFT, mPlayButtonId);
+    AddNav(mAboutButtonId, UI_DIR_LEFT, mPlayButtonId);*/
 
 }
 
-void WelcomeScene::OnStartGraphics() {
+void SnakeScene::OnStartGraphics() {
     UiScene::OnStartGraphics();
 }
 
-void WelcomeScene::OnCreateWidgets() {
+void SnakeScene::OnCreateWidgets() {
 
     // create widgets
     float maxX = SceneManager::GetInstance()->GetScreenAspect();
     float center = 0.5f * maxX;
 
     // create the static title
-    NewWidget()->SetText(S_TITLE)->SetCenter(center,0.85f)->SetTextColor(TITLE_COLOR)
-            ->SetFontScale(TITLE_FONT_SCALE)->SetTransition(UiWidget::TRANS_FROM_TOP);
-
-    // create the "play" button
-    mPlayButtonId = NewWidget()->SetText(S_PLAY)->SetTextColor(BUTTON_COLOR)
-            ->SetCenter(0.1f,0.1f)->SetSize(BUTTON_PLAY_SIZE)
+    NewWidget()->SetText(S_PLAY)->SetTextColor( 1.0f, 0.0f, 1.0f)
+            ->SetCenter(0.3f,0.3f)->SetSize(BUTTON_PLAY_SIZE)
             ->SetFontScale(BUTTON_PLAY_FONT_SCALE)->SetIsButton(true)
             ->SetTransition(UiWidget::TRANS_SCALE)->GetId();
 
-    // story button
-    mStoryButtonId = NewWidget()->SetTextColor(BUTTON_COLOR)->SetText(S_STORY)
-            ->SetCenter(BUTTON_STORY_POS)->SetSize(BUTTON_SIDEBUTTON_SIZE)
-            ->SetFontScale(BUTTON_FONT_SCALE)->SetIsButton(true)
-            ->SetTransition(UiWidget::TRANS_FROM_RIGHT)->GetId();
+    // create the "play" button
+/*mPlayButtonId = NewWidget()->SetText(S_PLAY)->SetTextColor( 1.0f, 0.0f, 1.0f)
+            ->SetCenter(0.3f,0.3f)->SetSize(BUTTON_PLAY_SIZE)
+            ->SetFontScale(BUTTON_PLAY_FONT_SCALE)->SetIsButton(true)
+            ->SetTransition(UiWidget::TRANS_SCALE)->GetId();*/
+    /*
+     // story button
+     mStoryButtonId = NewWidget()->SetTextColor(BUTTON_COLOR)->SetText(S_STORY)
+             ->SetCenter(BUTTON_STORY_POS)->SetSize(BUTTON_SIDEBUTTON_SIZE)
+             ->SetFontScale(BUTTON_FONT_SCALE)->SetIsButton(true)
+             ->SetTransition(UiWidget::TRANS_FROM_RIGHT)->GetId();
 
-    // about button
-    mAboutButtonId = NewWidget()->SetTextColor(BUTTON_COLOR)->SetText(S_ABOUT)
-            ->SetCenter(BUTTON_ABOUT_POS)->SetSize(BUTTON_SIDEBUTTON_SIZE)
-            ->SetFontScale(BUTTON_FONT_SCALE)->SetIsButton(true)
-            ->SetTransition(UiWidget::TRANS_FROM_RIGHT)->GetId();
+     // about button
+     mAboutButtonId = NewWidget()->SetTextColor(BUTTON_COLOR)->SetText(S_ABOUT)
+             ->SetCenter(BUTTON_ABOUT_POS)->SetSize(BUTTON_SIDEBUTTON_SIZE)
+             ->SetFontScale(BUTTON_FONT_SCALE)->SetIsButton(true)
+             ->SetTransition(UiWidget::TRANS_FROM_RIGHT)->GetId();*/
 
     // "Play" button is the default button
-    SetDefaultButton(mPlayButtonId);
+//    SetDefaultButton(mPlayButtonId);
 
     // enable/disable widgets as appropriate to signed in state
     UpdateWidgetStates();
 }
 
-void WelcomeScene::OnKillGraphics() {
+void SnakeScene::OnKillGraphics() {
     UiScene::OnKillGraphics();
 }
 

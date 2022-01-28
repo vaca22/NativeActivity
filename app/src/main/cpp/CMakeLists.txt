@@ -40,6 +40,7 @@ add_library(game SHARED
      dialog_scene.cpp
      indexbuf.cpp
      input_util.cpp
+        snake_scene.cpp
      native_engine.cpp
      obstacle.cpp
      obstacle_generator.cpp
@@ -69,7 +70,7 @@ target_link_libraries(game
      native_app_glue
      atomic
      EGL
-     GLESv2
+     GLESv3
      glm
      log
      OpenSLES)
